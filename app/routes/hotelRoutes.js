@@ -5,6 +5,7 @@ const authMiddleware = require('../middlewares/authMiddleware')
 const hotelController = require('../controllers/hotelController');
 const authController = require('../controllers/authController');
 
+// Ruta para loguearse
 router.post('/login', authController.login);
 
 // Ruta para obtener todos los hoteles
