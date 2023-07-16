@@ -20,8 +20,15 @@ Before running the API, make sure you have the following installed:
 
 1. Clone the repository:
 
-git clone https://github.com/rolitodev/hotels_backend.git
-npm install
+  - git clone https://github.com/rolitodev/hotels_backend.git
+
+2. Install libraries
+    
+  - npm install
+
+3. Run project
+
+  - node ./app/index.js
 
 The API will start running at http://localhost:3000.
 
