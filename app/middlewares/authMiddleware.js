@@ -16,7 +16,7 @@ const authenticateToken = (req, res, next) => {
       next();
     });
   } else {
-    res.sendStatus(401); // No se proporcionó el token de autenticación
+    res.status(401).send('No se proporcionó el token de autenticación. Intentalo de nuevo.'); // No se proporcionó el token de autenticación
   }
 };
 

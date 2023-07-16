@@ -24,6 +24,6 @@ router.put('/:id', authMiddleware.authenticateToken, hotelController.updateHotel
 router.delete('/:id', authMiddleware.authenticateToken, hotelController.deleteHotel);
 
 // Ruta para filtrar hoteles por nombre
-router.get('/filter', authMiddleware.authenticateToken, hotelController.filterHotels);
+router.post('/filter', authMiddleware.authenticateToken, hotelController.filterHotelByName);
 
 module.exports = router;

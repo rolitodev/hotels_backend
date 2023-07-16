@@ -3,6 +3,7 @@ const Hotel = require('../models/hotel');
 // Obtener todos los hoteles
 const getAllHotels = (req, res) => {
   Hotel.find()
+    .sort({ createdAt: -1 }) // Ordenar por createdAt en orden descendente (-1)
     .then(hotels => res.json(hotels))
     .catch(error => res.status(500).json({ error: 'Error al obtener los hoteles', ...error }));
 };
@@ -60,15 +61,14 @@ const deleteHotel = (req, res) => {
 };
 
 // Controlador para filtrar hoteles por nombre
-const filterHotels = async (req, res) => {
-  const { name } = req.query;
+const filterHotelByName = async (req, res) => {
+  const { name } = req.body;
 
   try {
     const hotels = await Hotel.find({ name: { $regex: name, $options: 'i' } });
-
     res.json(hotels);
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener hoteles.', error });
+    res.status(500).json({ message: 'Error al obtener hoteles.', ...error });
   }
 };
 
@@ -78,5 +78,5 @@ module.exports = {
   createHotel,
   updateHotel,
   deleteHotel,
-  filterHotels
+  filterHotelByName
 };
