@@ -59,10 +59,24 @@ const deleteHotel = (req, res) => {
     .catch(error => res.status(500).json({ error: 'Error al eliminar el hotel', ...error }));
 };
 
+// Controlador para filtrar hoteles por nombre
+const filterHotels = async (req, res) => {
+  const { name } = req.query;
+
+  try {
+    const hotels = await Hotel.find({ name: { $regex: name, $options: 'i' } });
+
+    res.json(hotels);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener hoteles.', error });
+  }
+};
+
 module.exports = {
   getAllHotels,
   getHotelById,
   createHotel,
   updateHotel,
-  deleteHotel
+  deleteHotel,
+  filterHotels
 };

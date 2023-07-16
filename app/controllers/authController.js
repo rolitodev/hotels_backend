@@ -3,11 +3,14 @@ const secretKey = process.env.SECRET_KEY; // Clave secreta para firmar los token
 
 const login = (req, res) => {
 
-  // generar un token JWT
-  const token = jwt.sign({ userId: '' }, secretKey, { expiresIn: '24h' });
+  // Generar un token JWT con fecha de vencimiento
+  const expiresIn = 24 * 60 * 60; // Tiempo de expiración en segundos (24 horas en este ejemplo)
+  const expirationDate = Math.floor(Date.now() / 1000) + expiresIn; // Calcular la fecha de vencimiento en segundos
+  const token = jwt.sign({ userId: '' }, secretKey, { expiresIn });
 
-  // Devolver el token como respuesta
-  res.json({ token });
+  // Devolver el token y la fecha de vencimiento como respuesta
+  res.json({ token, expiresIn: expirationDate });
+
 };
 
 module.exports = {
