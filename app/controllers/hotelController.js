@@ -34,8 +34,8 @@ const createHotel = (req, res) => {
 // Actualizar un hotel existente
 const updateHotel = (req, res) => {
   const hotelId = req.params.id;
-  const { name, address } = req.body;
-  Hotel.findByIdAndUpdate(hotelId, { name, address }, { new: true })
+  const { name, address, city, country, stars, description } = req.body;
+  Hotel.findByIdAndUpdate(hotelId, { name, address, city, country, stars, description }, { new: true })
     .then(hotel => {
       if (hotel) {
         res.json(hotel);
