@@ -39,7 +39,7 @@ The API will start running at http://localhost:3000.
 - POST /hotels - Create a new hotel.
 - PUT /hotels/:id - Update a hotel by ID.
 - DELETE /hotels/:id - Delete a hotel by ID.
-- GET /hotels/filter?name=hotel-name&... - Filter hotels.
+- POST /hotels/filter - Filter hotels by name
 
 ## Authentication
 The API uses JWT for user authentication. To access protected routes, include a valid JWT token in the Authorization header.
